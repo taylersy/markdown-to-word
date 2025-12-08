@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: md2word-backend
+    env: docker
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: backend
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 8000

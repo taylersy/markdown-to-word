@@ -10,6 +10,10 @@ import shutil
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"status": "ok", "service": "Markdown to Word Converter"}
+
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
