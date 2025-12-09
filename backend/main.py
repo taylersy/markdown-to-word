@@ -30,7 +30,9 @@ try:
 except OSError:
     print("Pandoc not found. Downloading...")
     try:
-        pypandoc.download_pandoc()
+        # In Vercel or read-only environments, we must use /tmp
+        download_folder = '/tmp' if os.path.exists('/tmp') else None
+        pypandoc.download_pandoc(targetfolder=download_folder)
         print("Pandoc downloaded successfully.")
     except Exception as e:
         print(f"Failed to download Pandoc: {e}")
